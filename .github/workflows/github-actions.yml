@@ -10,11 +10,7 @@ jobs:
         container: cuaesd/aesd-autotest:24-unit-test
         runs-on: self-hosted
         steps:
-          - name: Checkout repository
-            run: |
-               git clone https://github.com/${{ github.repository }}.git /app
-               cd /app
-               git checkout ${{ github.sha }}
+          - uses: actions/checkout@v2
           - name: Checkout submodules
             run : git submodule update --init --recursive
           - name: Run unit test
